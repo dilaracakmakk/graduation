@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# IDE0008: Açık tür kullanma
+csharp_style_var_elsewhere = true
+
+# IDE0058: İfade değeri asla kullanılmaz
+csharp_style_unused_value_expression_statement_preference = unused_local_variable

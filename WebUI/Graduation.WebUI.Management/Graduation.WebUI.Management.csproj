@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+
+	<ItemGroup>
+	  <Compile Remove="wwwroot\assets\sass\**" />
+	  <Content Remove="wwwroot\assets\sass\**" />
+	  <EmbeddedResource Remove="wwwroot\assets\sass\**" />
+	  <None Remove="wwwroot\assets\sass\**" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Compile Remove="Controllers\CategoryController - Kopyala.cs" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Content Remove="Views\Category\Add - Kopyala.cshtml" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.16" />
+		
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\graduation.Data\graduation.Data.csproj" />
+	  <ProjectReference Include="..\..\graduation.Model\graduation.Model.csproj" />
+	  <ProjectReference Include="..\..\Infrastructure\Caching\graduation.infrastructure.Caching.Memory\graduation.infrastructure.Caching.Memory.csproj" />
+	  <ProjectReference Include="..\Graduation.WebUI.Infrastructure\Graduation.WebUI.Infrastructure.csproj" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <None Include="wwwroot\assets\webfonts\fa-brands-400.svg" />
+	  <None Include="wwwroot\assets\webfonts\fa-brands-400.woff2" />
+	  <None Include="wwwroot\assets\webfonts\fa-regular-400.svg" />
+	  <None Include="wwwroot\assets\webfonts\fa-regular-400.woff2" />
+	  <None Include="wwwroot\assets\webfonts\fa-solid-900.svg" />
+	  <None Include="wwwroot\assets\webfonts\fa-solid-900.woff2" />
+	</ItemGroup>
+	
+	
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>

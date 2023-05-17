@@ -1,0 +1,62 @@
+﻿@model List<graduation.Model.Media>
+@{
+    ViewBag.Title = "Medias";
+
+}
+
+<div class="container-fluid">
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Medias</h1>
+
+        <a href="@Url.Action("Add", "Media")" class=" btn btn-sm btn-primary shadow-sm"> Yeni Medya Ekle </a>
+    </div>
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">kayıtlı medyalar</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>-</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var Item in Model)
+                        {
+                            <tr>
+                                <td>@Item.Title</td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Media", new { id = Item.Id})" class="btn btn-danger">sil</a>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                                                                          
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts {
+    <script src="~/assets/js/jquery.dataTables.min.js"></script>
+
+    <script src="~/assets/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+    </script>
+    }

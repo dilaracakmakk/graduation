@@ -1,0 +1,72 @@
+﻿@model List<graduation.Model.Content>
+@{
+    ViewBag.Title = "makaleler";
+
+}
+
+<div class="container-fluid">
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">makaleler</h1>
+
+        <a href="@Url.Action("Add", "Content")" class=" btn btn-sm btn-primary shadow-sm"> Yeni Makale Ekle </a>
+    </div>
+    <p class="mb-4 text-content">burada makaleleri listelerim</p>
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">kayıtlı makaleler</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>Yayın</th>
+                            <th>IsActive</th>
+                            <th>-</th>
+
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var Item in Model)
+                        {
+                            <tr>
+                                <td>@Item.Title</td>
+                                <td>@Item.PublishDate</td>
+
+                                <td>@Html.Raw(Item.IsActive ? "aktif" : "pasif")</td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Content", new { id =Item.Id})" class="btn btn-primary ">düzenle</a>
+                                    <a href="@Url.Action("Delete", "Content", new { id =Item.Id})" class="btn btn-danger">sil</a>
+
+                                </td>
+
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="~/assets/js/jquery.dataTables.min.js"></script>
+
+    <script src="~/assets/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+</script>
+}
+
