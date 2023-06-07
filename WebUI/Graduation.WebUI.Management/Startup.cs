@@ -2,6 +2,7 @@ using graduation.Data;
 using graduation.Data.infrastructure.Entities;
 using Graduation.WebUI.Infrastructure.Cache;
 using Graduation.WebUI.Infrastructure.Rules;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -64,6 +65,12 @@ namespace Graduation.WebUI.Management
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
 
+            services.AddAuthentication(o =>
+            {
+                o.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+            })
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o => { o.LoginPath = new PathString("/login"); });
             //data
             services.AddTransient<CategoryData>();
             services.AddTransient<ContentData>();
@@ -74,6 +81,9 @@ namespace Graduation.WebUI.Management
             services.AddTransient<AuthorData>();
             services.AddTransient<SettingData>();
             services.AddTransient<CommentData>();
+            services.AddTransient<RolePageData>();
+            services.AddTransient<RoleData>();
+
 
 
 
@@ -105,6 +115,7 @@ namespace Graduation.WebUI.Management
             options.Rules.Add(rule);
             app.UseRewriter(options);
             app.UseRouting();
+            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {

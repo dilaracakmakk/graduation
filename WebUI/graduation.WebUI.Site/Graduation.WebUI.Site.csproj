@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\graduation.Data\graduation.Data.csproj" />
     <ProjectReference Include="..\..\graduation.Model\graduation.Model.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Caching\graduation.infrastructure.Caching.Memory\graduation.infrastructure.Caching.Memory.csproj" />
     <ProjectReference Include="..\Graduation.WebUI.Infrastructure\Graduation.WebUI.Infrastructure.csproj" />
   </ItemGroup>
 
