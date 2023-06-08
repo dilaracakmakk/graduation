@@ -16,38 +16,31 @@
 
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        @foreach (var item in cache.Categories)
+       @foreach (var item in cache.Categories)
+       {
+           <p>@item.Name</p>
+
+       }
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        @foreach (var item in Model.Contents)
+        {
+            <p>@item.Title</p>
+
+        }
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        @foreach (var item in Model.Tags)
         {
             <p>@item.Name</p>
 
-        }
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-
-        @if (Model != null && Model.Contents != null)
-        {
-            @foreach (var item in Model.Contents)
-            {
-                <p>@item.Title</p>
-            }
-        }
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        @if (Model != null && Model.Tags != null)
-        {
-            @foreach (var item in Model.Tags)
-            {
-                if (item != null)
-                {
-                    <p>@item.Name</p>
-                }
-            }
         }
     </div>
 </div>

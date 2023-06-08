@@ -1,4 +1,3 @@
-using graduation.Data;
 using graduation.Data.infrastructure.Entities;
 using Graduation.WebUI.Infrastructure.Cache;
 using Graduation.WebUI.Infrastructure.Rules;
@@ -47,36 +46,18 @@ namespace graduation.WebUI.Site
                 services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             }
-            //config
-
             services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
             services.AddOptions();
 
-            //cache
-            services.AddMemoryCache();
-            services.AddTransient<ICache, graduation.infrastructure.Caching.Memory.Cache>();
-            services.AddTransient<CacheHelper>();
+
+         
+
 
             services.Configure<CookiePolicyOptions>(options =>
                 {
                     options.MinimumSameSitePolicy = SameSiteMode.Strict;
                 });
-
-        
-
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-            services.AddTransient<CategoryData>();
-            services.AddTransient<ContentData>();
-            services.AddTransient<ContentCategoryData>();
-            services.AddTransient<ContentTagData>();
-            services.AddTransient<TagData>();
-            services.AddTransient<MediaData>();
-            services.AddTransient<AuthorData>();
-            services.AddTransient<SettingData>();
-            services.AddTransient<CommentData>();
-            services.AddTransient<RolePageData>();
-            services.AddTransient<RoleData>();
-
             services.AddMvc(x =>
             {
                 x.EnableEndpointRouting = false;
@@ -108,7 +89,6 @@ namespace graduation.WebUI.Site
            {
                routes.MapRoute(name: "category", template: "kategori/{slug}", defaults: new { controller = "Category", action = "Index", page = 1 });
                routes.MapRoute(name: "categoryWithPage", template: "kategori/{slug}/sayfa/{page}", defaults: new { controller = "Category", action = "Index", page = 1 });
-               routes.MapRoute(name: "content", template: "{slug}", defaults: new { controller = "Content", action = "Index"});
 
 
                IRouteBuilder routeBuilder = routes.MapRoute(template: "{controller=Home}/{action=Index}/{id?}", name: "default");

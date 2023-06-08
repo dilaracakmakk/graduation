@@ -1,5 +1,4 @@
 ﻿using graduation.Data;
-using Graduation.WebUI.Management.Authorize;
 using Graduation.WebUI.Management.Helpers;
 using Graduation.WebUI.Management.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +7,6 @@ using System.Linq;
 
 namespace Graduation.WebUI.Management.Controllers
 {
-    [Authorize]
     public class CategoryController : Controller
     {
         CategoryData _categoryData;
