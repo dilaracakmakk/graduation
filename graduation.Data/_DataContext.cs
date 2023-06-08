@@ -21,6 +21,8 @@ namespace graduation.Data
         public DbSet<Model.Media> Medias { get; set; }
         public DbSet<Model.Tag> Tags { get; set; }
         public DbSet<Model.Setting> Setting { get; set; }
+        public DbSet<Model.Role> Roles { get; set; }
+        public DbSet<Model.RolePage> RolePages { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Model.Author>(entity => entity.ToTable("authors"));
@@ -32,6 +34,8 @@ namespace graduation.Data
             builder.Entity<Model.Media>(entity => entity.ToTable("medias"));
             builder.Entity<Model.Tag>(entity => entity.ToTable("tags"));
             builder.Entity<Model.Setting>(entity => entity.ToTable("setting"));
+            builder.Entity<Model.Role>(entity => entity.ToTable("roles"));
+            builder.Entity<Model.RolePage>(entity => entity.ToTable("role_pages"));
 
         }
     }

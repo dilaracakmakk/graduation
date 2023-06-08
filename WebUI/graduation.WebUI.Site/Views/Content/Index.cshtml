@@ -1,0 +1,38 @@
+﻿@model ContentViewModel
+@{
+    ViewBag.Title = Model.Content.MetaTitle;
+    var media = Model.Content.Media;
+}
+@section styles{ 
+<style>
+    #fh5co-title-box{
+        position: relative;
+        height: 700px;
+        width: 100%;
+    }
+    .descripton img{
+        max-width: 100%;
+    }
+</style>
+}
+
+
+<div id="fh5co-title-box" style="background-image: url(@Html.Raw(media != null ? media.MediaUrl : "/assets/images/camila-cordeiro-114636.jpg")); background-position: 50% 90.5px;" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="page-title">
+        <img src="/assets/images/person_1.jpg" alt="">
+        <span>@Model.Content.PublishDate.ToString("dd MMMM yyyy")</span>
+        <h2>@Model.Content.Title</h2>
+    </div>
+</div>
+<div id="fh5co-single-content" class="container-fluid pb-4 pt-4 paddding">
+    <div class="container paddding">
+        <div class="row mx-0">
+            <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
+               @Html.Raw(Model.Content.Description)
+            </div>
+            @await Html.PartialAsync("_SideBar")
+
+        </div>
+    </div>
+</div>

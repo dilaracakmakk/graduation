@@ -1,4 +1,5 @@
 ﻿using graduation.Data;
+using Graduation.WebUI.Management.Authorize;
 using Graduation.WebUI.Management.Helpers;
 using Graduation.WebUI.Management.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Graduation.WebUI.Management.Controllers
 {
+    [Authorize]
     public class ContentController : Controller
     {
         CategoryData _categoryData;
@@ -171,8 +173,8 @@ namespace Graduation.WebUI.Management.Controllers
             modelInDb.MetaDescription = content.MetaDescription;
             modelInDb.IsActive = content.IsActive;
             modelInDb.MediaId = content.MediaId;
-            modelInDb.Slug = content.Slug;
-            modelInDb.UpdateDate = content.UpdateDate;
+            modelInDb.Slug = content.Slug.ToSlug();
+            modelInDb.UpdateDate = DateTime.Now;
             modelInDb.PublishDate = content.PublishDate;
 
             var operationResult = _contentData.Update(modelInDb);
